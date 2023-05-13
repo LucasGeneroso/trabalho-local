@@ -1,0 +1,3 @@
+[DEV]
+ignore = */migrations/*.py
+load-plugins = pylint_django
