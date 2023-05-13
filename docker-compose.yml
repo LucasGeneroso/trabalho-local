@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+    trabalho-local:
+        build:
+            context: ./
+            dockerfile: Dockerfile
+        container_name: trabalho-local
+        volumes:
+            - ./:/code
+        ports:
+            - 8000:8000
+        stdin_open: true
+        tty: true
+        networks:
+            - local-network
+
+networks:
+  local-network:
+    name: local-network
+    external: true
