@@ -20,10 +20,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: |
-          pip install Django==3.2
-          pip install pylint
-          pip install pylint-django
+        run: pip install -r ./requirements/base.txt
       - name: Analysing the code with pylint
         run: |
           pylint --ignore=migrations,admin.py,models.py $(git ls-files '*.py')
