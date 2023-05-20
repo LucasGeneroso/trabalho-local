@@ -1,0 +1,28 @@
+name: Deploy to Heroku
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Deploy to Heroku
+      run: |
+        heroku login -i
+        heroku git:remote -a trabalho-local
+        git push heroku main
