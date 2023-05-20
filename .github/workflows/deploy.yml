@@ -19,7 +19,7 @@ jobs:
           python-version: 3.x
 
       - name: Install dependencies
-        run: pip install -r ./requirements/base.txt
+        run: pip install -r requirements.txt
 
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.12
