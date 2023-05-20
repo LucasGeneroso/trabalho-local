@@ -1,2 +1,2 @@
-# this requirements is used for deploying in heroku platform.
--r base.txt
+# this requirements is used for deploying in heroku platform for detected python application.
+-r .requirements/base.txt
