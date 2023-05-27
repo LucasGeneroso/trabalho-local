@@ -6,11 +6,11 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .models import Habilidade, Perfil, Servico, Avaliacao, Pedido, Mensagem
 from .serializers import (
-    HabilidadeSerializer, 
-    PedidoSerializer, 
-    PerfilSerializer, 
-    ServicoSerializer, 
-    AvaliacaoSerializer, 
+    HabilidadeSerializer,
+    PedidoSerializer,
+    PerfilSerializer,
+    ServicoSerializer,
+    AvaliacaoSerializer,
     MensagemSerializer,
 )
 
