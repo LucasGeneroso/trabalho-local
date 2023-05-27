@@ -21,7 +21,6 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-
 from apps.api.urls import api_router
 
 
