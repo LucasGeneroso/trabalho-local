@@ -7,11 +7,11 @@ ignore-patterns=migrations,admin.py,models.py
 disable=
     missing-module-docstring,
     missing-class-docstring,
+    missing-function-docstring,
+    too-many-ancestors,
     line-too-long,
     invalid-name,
-    trailing-whitespace,
     too-few-public-methods,
     invalid-str-returned,
     no-member,
-    unused-import,
     import-outside-toplevel
