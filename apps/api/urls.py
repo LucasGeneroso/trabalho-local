@@ -19,5 +19,5 @@ router.register('mensagens', MensagemViewSet)
 
 api_router = [
     # outras urls do seu projeto
-    path('api/', include(router.urls)),
+    path('', include(router.urls)),
 ]
