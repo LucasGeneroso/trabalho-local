@@ -2,7 +2,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import permission_classes, authentication_classes
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.authentication import SessionAuthentication
+
 from .models import Habilidade, Perfil, Servico, Avaliacao, Pedido, Mensagem
 from .serializers import (
     HabilidadeSerializer, 
