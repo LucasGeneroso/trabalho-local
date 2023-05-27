@@ -32,17 +32,17 @@ class TestHabilidadesViewSet(TestCase):
         content_data = content[0]
         self.assertEqual(expected_name, content_data.get("nome"))
         self.assertEqual(expected_description, content_data.get("descricao"))
-    
+
     def test_create_view(self):
         # Cria o payload a ser testado
         data = {"nome": "Habilidade em Jardinagem", "descricao": "Habilidade em cuidar de jardins"}
-        
-        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201) 
+
+        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201)
         response = self.client.post("/api/habilidades/", data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_retrieve_view(self):
-        habilidade_id = 1 
+        habilidade_id = 1
 
         # Faz a requisição e verifica se a resposta foi bem-sucedida (status 200)
         response = self.client.get(f"/api/habilidades/{habilidade_id}/")
@@ -65,7 +65,7 @@ class TestPerfisViewSet(TestCase):
         self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {self.refresh_token.access_token}")
         Habilidade.objects.create(nome="Habilidade de engenharia", descricao="Habilidade em realizar engenharia")
         Perfil.objects.create(user=self.user, experiencia="Experiência de testes", portifolio="https://www.teste.com")
-    
+
 
     def test_list_view(self):
         # Faz a requisição e verifica se a resposta foi bem-sucedida (status 200)
@@ -82,11 +82,11 @@ class TestPerfisViewSet(TestCase):
         content_data = content[0]
         self.assertEqual(expected_experience, content_data.get("experiencia"))
         self.assertEqual(expected_portifolio, content_data.get("portifolio"))
-    
+
     def test_create_view(self):
         # Cria um novo usuário para o teste
         user_2 = User.objects.create_user(username="user_teste2", email="test2@test2.com", password="teste1234")
-        
+
         # Cria o payload a ser testado
         data = {
             "user": user_2.pk, 
@@ -94,13 +94,13 @@ class TestPerfisViewSet(TestCase):
             "portifolio": "https://www.jardinagem.com",
             "habilidades": [1]
         }
-        
-        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201) 
+
+        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201)
         response = self.client.post("/api/perfis/", data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-    
+
     def test_retrieve_view(self):
-        perfil_id = 1 
+        perfil_id = 1
 
         # Faz a requisição e verifica se a resposta foi bem-sucedida (status 200)
         response = self.client.get(f"/api/perfis/{perfil_id}/")
@@ -123,8 +123,8 @@ class TestServicosViewSet(TestCase):
         self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {self.refresh_token.access_token}")
         self.perfil = Perfil.objects.create(user=self.user, experiencia="Experiência de testes", portifolio="https://www.teste.com")
         Servico.objects.create(perfil=self.perfil, descricao="Descrição de testes", preco=100.00, localizacao="Leme - SP")
-    
-    
+
+
     def test_list_view(self):
         # Faz a requisição e verifica se a resposta foi bem-sucedida (status 200)
         response = self.client.get("/api/servicos/")
@@ -142,7 +142,7 @@ class TestServicosViewSet(TestCase):
         self.assertEqual(expected_description, content_data.get("descricao"))
         self.assertEqual(expected_price, content_data.get("preco"))
         self.assertEqual(expected_location, content_data.get("localizacao"))
-    
+
     def test_create_view(self):
         # Cria o payload a ser testado
         data = {
@@ -151,13 +151,13 @@ class TestServicosViewSet(TestCase):
             "preco": 100.00,
             "localizacao": "Leme - SP"
         }
-        
-        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201) 
+
+        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201)
         response = self.client.post("/api/servicos/", data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-    
+
     def test_retrieve_view(self):
-        servico_id = 1 
+        servico_id = 1
 
         # Faz a requisição e verifica se a resposta foi bem-sucedida (status 200)
         response = self.client.get(f"/api/servicos/{servico_id}/")
@@ -200,7 +200,7 @@ class TestAvaliacoesViewSet(TestCase):
         content_data = content[0]
         self.assertEqual(expected_comment, content_data.get("comentario"))
         self.assertEqual(expected_note, content_data.get("nota"))
-    
+
     def test_create_view(self):
         # Cria o payload a ser testado
         data = {
@@ -209,13 +209,13 @@ class TestAvaliacoesViewSet(TestCase):
             "comentario": "Comentário de jardinagem",
             "nota": 5
         }
-        
-        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201) 
+
+        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201)
         response = self.client.post("/api/avaliacoes/", data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-    
+
     def test_retrieve_view(self):
-        avaliacao_id = 1 
+        avaliacao_id = 1
 
         # Faz a requisição e verifica se a resposta foi bem-sucedida (status 200)
         response = self.client.get(f"/api/avaliacoes/{avaliacao_id}/")
@@ -258,7 +258,7 @@ class TestPedidosViewSet(TestCase):
         self.assertEqual(expected_date, content_data.get("data"))
         self.assertEqual(expected_hour, content_data.get("hora"))
         self.assertEqual(expected_status, content_data.get("status"))
-    
+
     def test_create_view(self):
         # Cria o payload a ser testado
         data = {
@@ -268,13 +268,13 @@ class TestPedidosViewSet(TestCase):
             "hora": "10:00:00",
             "status": "pendente"
         }
-        
-        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201) 
+
+        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201)
         response = self.client.post("/api/pedidos/", data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-    
+
     def test_retrieve_view(self):
-        pedido_id = 1 
+        pedido_id = 1
 
         # Faz a requisição e verifica se a resposta foi bem-sucedida (status 200)
         response = self.client.get(f"/api/pedidos/{pedido_id}/")
@@ -301,7 +301,7 @@ class TestMensagemViewSet(TestCase):
         self.remetente = Perfil.objects.create(user=self.user_rmt, experiencia="Remetente de testes", portifolio="https://www.teste.com")
         self.destinatario = Perfil.objects.create(user=self.user_dst, experiencia="Destinatario de testes", portifolio="https://www.teste.com")
         Mensagem.objects.create(remetente=self.remetente, destinatario=self.destinatario, texto="Texto de testes")
-    
+
     def test_list_view(self):
         # Faz a requisição e verifica se a resposta foi bem-sucedida (status 200)
         response = self.client.get("/api/mensagens/")
@@ -315,7 +315,7 @@ class TestMensagemViewSet(TestCase):
         expected_text = "Texto de testes"
         content_data = content[0]
         self.assertEqual(expected_text, content_data.get("texto"))
-    
+
     def test_create_view(self):
         # Cria o payload a ser testado
         data = {
@@ -325,7 +325,7 @@ class TestMensagemViewSet(TestCase):
             "assunto": "Assunto de testes",
             "texto": "Texto de testes"
         }
-        
-        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201) 
+
+        # Faz a requisição e verifica se a resposta foi bem-sucedida (status 201)
         response = self.client.post("/api/mensagens/", data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
